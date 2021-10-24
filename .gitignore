@@ -1,0 +1,10 @@
+.idea/*
+*.pyc
+.vscode/*
+venv/*
+.DS_Store
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

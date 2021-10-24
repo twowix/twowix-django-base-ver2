@@ -1,0 +1,9 @@
+Django
+djangorestframework
+djangorestframework-jwt
+boto3
+django-storages
+requests
+psycopg2
+psycopg2-binary
+django-debug-toolbar
