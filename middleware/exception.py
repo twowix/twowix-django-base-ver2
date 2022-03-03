@@ -1,10 +1,9 @@
 from rest_framework.views import exception_handler
 from rest_framework import exceptions
-from rest_framework.response import Response
 from common.library import *
 
 
-def cus_exception_handler(exc, context):
+def twowix_exception_handler(exc, context):
     response = exception_handler(exc, context)
 
     if response is not None:
@@ -54,4 +53,4 @@ def cus_exception_handler(exc, context):
 
     else:
         print("ER|%s| %s" % (exc, context))
-        return Response(response_serializer(STATUS_RSP_INTERNAL_ERROR), status=200)
+        return APIResponse(STATUS_INTERNAL_ERROR)

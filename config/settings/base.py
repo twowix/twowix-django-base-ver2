@@ -2,7 +2,7 @@ from pathlib import Path
 import datetime
 import os
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 SERVER_ENV = os.environ.get('SERVER_ENV', 'local')
 
@@ -95,14 +95,13 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated'
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
     ],
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer'
     ],
-    'EXCEPTION_HANDLER': 'config.authorization.exceptions.cus_exception_handler'
+    'EXCEPTION_HANDLER': 'middleware.exception.twowix_exception_handler'
 }
 
 AUTH_USER_MODEL = 'user.User'

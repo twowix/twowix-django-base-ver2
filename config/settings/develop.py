@@ -24,6 +24,6 @@ else:
     with open(env_json) as f:
         env_json = json.loads(f.read())['development']
 
-INSTALLED_APPS.append('model.user')
+INSTALLED_APPS.append('db.user')
 
 SECRET_KEY = env_json['SECRET_KEY']

@@ -1,6 +1,5 @@
 import datetime
 import json
-import uuid
 from datetime import datetime
 from datetime import timedelta
 
@@ -9,6 +8,7 @@ from common.response_code import *
 from django.conf import settings
 from rest_framework.exceptions import APIException
 from rest_framework_jwt.settings import api_settings
+from rest_framework.response import Response
 
 JSON_CODE = "code"
 JSON_MESSAGE = "message"
@@ -21,8 +21,14 @@ jwt_decode_handler = api_settings.JWT_DECODE_HANDLER
 ######################################################
 # Common
 ######################################################
-def get_uuid():
-    return uuid.uuid4()
+# API 응답
+def APIResponse(code, data=None):
+    response_data = {
+        'code': code,
+        'message': code_to_message(code),
+        'data': data
+    }
+    return Response(response_data)
 
 
 ######################################################
@@ -43,15 +49,15 @@ def mandatory_key(request, name):
         else:
             data = request.POST[name]
         if data == '':
-            raise APIException(STATUS_RSP_MISSING_MANDATORY_PARAM)
+            raise APIException(STATUS_MISSING_MANDATORY_PARAM)
     except:
         try:
             json_body = request.data
             data = json_body[name]
             if data == "":
-                raise APIException(STATUS_RSP_MISSING_MANDATORY_PARAM)
+                raise APIException(STATUS_MISSING_MANDATORY_PARAM)
         except:
-            raise APIException(STATUS_RSP_MISSING_MANDATORY_PARAM)
+            raise APIException(STATUS_MISSING_MANDATORY_PARAM)
     return data
 
 
@@ -100,7 +106,7 @@ def paging(request):
         page = int(request.GET.get('page', 1)) - 1
         size = int(request.GET.get('size', 10))
         if request.path.split('/')[1] != "cms-api" and size > 30:
-            raise APIException(STATUS_RSP_MAX_SIZE_OVER)
+            raise APIException(STATUS_MAX_SIZE_OVER)
         start_row = page * size
         end_row = (page + 1) * size
     except APIException as e:
