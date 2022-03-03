@@ -17,14 +17,14 @@ STATUS_USER_ALREADY_EXISTS = 4501
 STATUS_USER_NICK_ALREADY_EXISTS = 4502
 STATUS_USER_PASSWORD_NOT_MATCHED = 4503
 STATUS_USER_INVALID_ACCESS_TOKEN = 4504
-STATUS_USER_IS_DROP_OUT = 4505
-STATUS_USER_IS_BLACK = 4506
+STATUS_USER_DROP_OUT = 4505
+STATUS_USER_IN_BLACK_LIST = 4506
 
 
 _code_to_message = {
     # SUCCESS
     STATUS_SUCCESS: 'success',
-    STATUS_SIGNATURE_EXPIRED: 'Signature has expired.',
+    STATUS_SIGNATURE_EXPIRED: 'signature has expired',
 
     # COMMON ERROR
     STATUS_INTERNAL_ERROR: 'internal server error',
@@ -40,8 +40,8 @@ _code_to_message = {
     STATUS_USER_NICK_ALREADY_EXISTS: 'user nick already exists',
     STATUS_USER_PASSWORD_NOT_MATCHED: 'user password not matched',
     STATUS_USER_INVALID_ACCESS_TOKEN: 'invalid access token',
-    STATUS_USER_IS_DROP_OUT: 'user is drop out',
-    STATUS_USER_IS_BLACK: 'user is black list',
+    STATUS_USER_DROP_OUT: 'user drop out',
+    STATUS_USER_IN_BLACK_LIST: 'user in black list',
 }
 
 
